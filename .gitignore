@@ -51,5 +51,5 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# DWM Binary
+# Binary
 dwm

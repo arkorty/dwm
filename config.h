@@ -17,18 +17,18 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono NL:size=9" };
 static const char dmenufont[]       = "JetBrains Mono NL:size=9";
 
-static const char norm_fg[]     = "#D5C4A1";
-static const char norm_bg[]     = "#1d2021";
-static const char norm_border[] = "#665c54";
+static const char norm_fg[] = "#ff6e67";
+static const char norm_bg[] = "#282a36";
+static const char norm_border[] = "#dfdfdd";
 
-static const char sel_fg[]      = "#FE8019";
-static const char sel_bg[]      = "#1d2021";
-static const char sel_border[]  = "#fbf1c7";
+static const char sel_fg[] = "#bfbfbf";
+static const char sel_bg[] = "#282a36";
+static const char sel_border[] = "#bfbfbf";
 
 static const char *colors[][3]      = {
-    /*               fg           bg          border                         */
-    [SchemeNorm] =   { norm_fg,   norm_bg,    norm_border }, 		     // unfocused wins
-    [SchemeSel]  =   { sel_fg,    sel_bg,     sel_border },		     // the focused win
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
 };
 
 /* tagging */
@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \

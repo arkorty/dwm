@@ -5,8 +5,8 @@
 /* appearance */
 static const char *audioctl[]       = { "/usr/bin/pavucontrol", NULL };
 static const char *screenshot[]     = { "/usr/bin/scrot", "/home/ark/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
-static const char *brightup[]       = { "/usr/bin/xbacklight", "-inc", "10", NULL };
-static const char *brightdown[]     = { "/usr/bin/xbacklight", "-dec", "10", NULL };
+static const char *brightup[]       = { "/usr/bin/xbacklight", "-inc", "5", NULL };
+static const char *brightdown[]     = { "/usr/bin/xbacklight", "-dec", "5", NULL };
 static const char *upvol[]          = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[]        = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[]        = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
@@ -17,19 +17,35 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono NL:size=9" };
 static const char dmenufont[]       = "JetBrains Mono NL:size=9";
 
-static const char norm_fg[] = "#ff6e67";
-static const char norm_bg[] = "#282a36";
-static const char norm_border[] = "#dfdfdd";
+// gruvbox soft theme
+static const char norm_fg[] = "#fbf1c7";
+static const char norm_bg[] = "#32302f";
+static const char norm_border[] = "#665c54";
 
-static const char sel_fg[] = "#bfbfbf";
-static const char sel_bg[] = "#282a36";
-static const char sel_border[] = "#bfbfbf";
+static const char sel_fg[] = "#32302f";
+static const char sel_bg[] = "#b8bb26";
+static const char sel_border[] = "#fbf1c7";
 
 static const char *colors[][3]      = {
     /*               fg           bg         border                         */
     [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
     [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
 };
+
+// dracula theme
+//static const char norm_fg[]     = "#ff6e67";
+//static const char norm_bg[]     = "#282a36";
+//static const char norm_border[] = "#ff6e67";
+//
+//static const char sel_fg[]      = "#bfbfbf";
+//static const char sel_bg[]      = "#282a36";
+//static const char sel_border[]  = "#dfdfdd";
+//
+//static const char *colors[][3]      = {
+//    /*               fg           bg         border                         */
+//    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+//    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+//};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };

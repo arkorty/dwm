@@ -232,6 +232,7 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void togglefullscr(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -329,6 +330,12 @@ void applyrules(Client *c) {
     if (ch.res_name)
         XFree(ch.res_name);
     c->tags = c->tags & TAGMASK ? c->tags & TAGMASK : c->mon->tagset[c->mon->seltags];
+}
+
+/* actual fullscreen patch */
+void togglefullscr(const Arg *arg) {
+    if (selmon->sel)
+        setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
 }
 
 int applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact) {

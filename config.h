@@ -55,7 +55,8 @@ static const char *colors[][3] = {
 #endif
 
 /* tagging */
-static const char *tags[] = {"term", "edit", "www", "file", "comm", "music", "video", "misc", "misc"};
+static const char *tags[] = {"term", "edit",  "file", "www", "docs",
+                             "comm", "media", "misc", "misc"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -63,17 +64,22 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class, instance, title, tags mask, iscentered, isfloating, monitor */
-    {"Nitrogen", NULL, NULL, 0, 1, 1, -1},     {"Alacritty", NULL, NULL, 0, 0, 0, -1},
-    {"Nemo", NULL, NULL, 1 << 3, 0, 0, -1},    {"Code", NULL, NULL, 1 << 1, 0, 0, -1},
-    {"Pavucontrol", NULL, NULL, 0, 1, 1, -1},  {"firefox", NULL, NULL, 1 << 2, 0, 0, -1},
-    {"Spotify", NULL, NULL, 1 << 5, 0, 0, -1},
+    {"Nitrogen", NULL, NULL, 0, 1, 1, -1},
+    {"Alacritty", NULL, NULL, 0, 0, 0, -1},
+    {"Nemo", NULL, NULL, 1 << 2, 0, 0, -1},
+    {"Code", NULL, NULL, 1 << 1, 0, 0, -1},
+    {"Pavucontrol", NULL, NULL, 0, 1, 1, -1},
+    {"firefox", NULL, NULL, 1 << 3, 0, 0, -1},
+    {"Spotify", NULL, NULL, 1 << 6, 0, 0, -1},
 };
 
 /* layout(s) */
-static const float mfact = 0.55;     /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;        /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster = 1;    /* number of clients in master area */
+static const int resizehints =
+    1; /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen =
+    1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
@@ -84,21 +90,24 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
-#define TAGKEYS(KEY, TAG)                                                                                              \
-    {MODKEY, KEY, view, {.ui = 1 << TAG}}, {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},                  \
-        {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                                                              \
+#define TAGKEYS(KEY, TAG)                                                      \
+    {MODKEY, KEY, view, {.ui = 1 << TAG}},                                     \
+        {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},             \
+        {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                      \
         {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd)                                                                                                     \
-    {                                                                                                                  \
-        .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                                                           \
+#define SHCMD(cmd)                                                             \
+    {                                                                          \
+        .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                   \
     }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {"dmenu_run", "-m",      dmenumon, "-fn",     dmenufont, "-nb",     col_gray1,
-                                 "-nf",       col_gray4, "-sb",    col_gray2, "-sf",     col_gray1, NULL};
+static char dmenumon[2] =
+    "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = {
+    "dmenu_run", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf",
+    col_gray4,   "-sb", col_gray2, "-sf", col_gray1, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 
 static Key keys[] = {
@@ -136,8 +145,9 @@ static Key keys[] = {
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3) TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5)
-        TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7) TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
+        TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
+            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
 };
 
 /* button definitions */

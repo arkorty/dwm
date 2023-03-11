@@ -24,8 +24,36 @@ static const int topbar = 1;            /* 0 means bottom bar */
 static const char *fonts[] = {"JetBrainsMono Nerd Font:size=9"};
 static const char dmenufont[] = {"JetBrainsMono Nerd Font:size=9"};
 
+/* base16 black metal */
 #if 1
+// static const char base00[] = "#000000";
+static const char base00[] = "#171717";
+static const char base01[] = "#121212";
+static const char base02[] = "#222222";
+// static const char base03[] = "#333333";
+static const char base03[] = "#494949";
+static const char base04[] = "#999999";
+static const char base05[] = "#c1c1c1";
+static const char base06[] = "#999999";
+static const char base07[] = "#c1c1c1";
+static const char base08[] = "#5f8787";
+static const char base09[] = "#aaaaaa";
+static const char base0A[] = "#a06666";
+static const char base0B[] = "#dd9999";
+static const char base0C[] = "#aaaaaa";
+static const char base0D[] = "#888888";
+static const char base0E[] = "#999999";
+static const char base0F[] = "#444444";
+
+static const char *colors[][3] = {
+    /*               fg         bg         border   */
+    [SchemeNorm] = {base05, base00, base0F},
+    [SchemeSel] = {base05, base03, base0A},
+};
+#endif
+
 /* nord */
+#if 0
 static const char col_gray1[] = "#2e3440";
 static const char col_gray2[] = "#81a1c1";
 static const char col_gray3[] = "#88c0d0";
@@ -39,8 +67,8 @@ static const char *colors[][3] = {
 };
 #endif
 
-#if 0
 /* gruvbox */
+#if 0
 static const char col_gray1[] = "#282828";
 static const char col_gray2[] = "#282828";
 static const char col_gray3[] = "#ebdbb2";
@@ -105,9 +133,21 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
+
+/* base16 black metal */
+#if 1
+static const char *dmenucmd[] = {
+    "dmenu_run", "-m",   dmenumon, "-fn",  dmenufont, "-nb",  base00,
+    "-nf",       base05, "-sb",    base08, "-sf",     base00, NULL};
+#endif
+
+/* nord */
+#if 0
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",  dmenumon,  "-fn", dmenufont, "-nb", col_gray1, "-nf",
     col_gray4,   "-sb", col_gray2, "-sf", col_gray1, NULL};
+#endif
+
 static const char *termcmd[] = {"alacritty", NULL};
 
 static Key keys[] = {
